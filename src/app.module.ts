@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AmqpModule } from './amqp/amqp.module';
 import { AppController } from './app.controller';
+import { ParserModule } from './parser/parser.module';
+import { StoresModule } from './stores/stores.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { AppController } from './app.controller';
       }),
     }),
     AmqpModule,
+    ParserModule,
+    StoresModule,
   ],
   controllers: [AppController],
 })
