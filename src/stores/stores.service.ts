@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { isDefined } from 'class-validator';
 import { Repository } from 'typeorm';
 import { CreateStoreRequestDto } from './dto/create-store.request.dto';
 import { PatchStoreRequestDto } from './dto/patch-store.request.dto';
@@ -39,10 +38,10 @@ export class StoresService {
 
     store.name = name;
     store.url = url;
-    store.priceClassName = priceClassName;
-    store.priceId = priceId;
-    store.productNameClassName = productNameClassName;
-    store.productNameId = productNameId;
+    store.priceClassName = priceClassName ?? null;
+    store.priceId = priceId ?? null;
+    store.productNameClassName = productNameClassName ?? null;
+    store.productNameId = productNameId ?? null;
 
     return this.storesRepository.save(store);
   }
@@ -50,10 +49,10 @@ export class StoresService {
   async patch(id: number, storeDto: PatchStoreRequestDto): Promise<Store> {
     const store = await this.findById(id);
 
-    if (isDefined(store.name)) {
+    if (storeDto.name !== undefined) {
       store.name = storeDto.name;
     }
-    if (isDefined(store.url)) {
+    if (storeDto.url !== undefined) {
       store.url = storeDto.url;
     }
     if (storeDto.priceClassName !== undefined) {
