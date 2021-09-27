@@ -12,14 +12,14 @@ export class Store {
   url!: string;
 
   @Column({ name: 'price_id', nullable: true })
-  priceId!: string | null;
+  priceId?: string;
 
   @Column({ name: 'price_class_name', nullable: true })
-  priceClassName!: string | null;
+  priceClassName?: string;
 
   @Column({ name: 'product_name_id', nullable: true })
-  productNameId!: string | null;
+  productNameId?: string;
 
   @Column({ name: 'product_name_class_name', nullable: true })
-  productNameClassName!: string | null;
+  productNameClassName?: string;
 }

@@ -19,9 +19,9 @@ export class StoreDto {
     this.id = store.id;
     this.name = store.name;
     this.url = store.url;
-    this.priceId = store.priceId;
-    this.priceClassName = store.priceClassName;
-    this.productNameId = store.productNameId;
-    this.productNameClassName = store.productNameClassName;
+    this.priceId = store.priceId ?? null;
+    this.priceClassName = store.priceClassName ?? null;
+    this.productNameId = store.productNameId ?? null;
+    this.productNameClassName = store.productNameClassName ?? null;
   }
 }
