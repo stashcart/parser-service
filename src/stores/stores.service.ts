@@ -71,7 +71,7 @@ export class StoresService {
     return this.storesRepository.save(store);
   }
 
-  async delete(id: number): Promise<void> {
+  async deleteById(id: number): Promise<void> {
     await this.storesRepository.delete(id);
   }
 }
