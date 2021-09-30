@@ -7,11 +7,13 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateStoreRequestDto } from './dto/create-store.request.dto';
 import { PatchStoreRequestDto } from './dto/patch-store.request.dto';
 import { StoreDto } from './dto/store.dto';
 import { StoresService } from './stores.service';
 
+@ApiTags('Stores')
 @Controller('stores')
 export class StoresController {
   constructor(private readonly storesService: StoresService) {}

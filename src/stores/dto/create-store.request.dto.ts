@@ -11,12 +11,12 @@ export class CreateStoreRequestDto {
   @IsUrl()
   url!: string;
 
-  @ApiProperty({ example: 'price' })
+  @ApiProperty({ example: '#price' })
   @IsString()
   @IsOptional()
   productPriceSelector?: string;
 
-  @ApiProperty({ example: 'name' })
+  @ApiProperty({ example: '#name' })
   @IsString()
   @IsOptional()
   productNameSelector?: string;
