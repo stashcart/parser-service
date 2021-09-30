@@ -9,6 +9,7 @@ export class ParseProductRequestDto {
   @IsUrl()
   url!: string;
 
+  @ApiProperty({ example: 'iherb' })
   @IsString()
   storeName!: string;
 }
