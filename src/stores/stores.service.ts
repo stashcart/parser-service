@@ -26,22 +26,28 @@ export class StoresService {
     return store;
   }
 
+  async findByStoreName(storeName: string): Promise<Store> {
+    const store = await this.storesRepository.findOne({ name: storeName });
+
+    if (!store) {
+      throw new NotFoundException(`Store: name=${storeName}`);
+    }
+
+    return store;
+  }
+
   create({
     name,
     url,
-    priceClassName,
-    priceId,
-    productNameId,
-    productNameClassName,
+    productNameSelector,
+    productPriceSelector,
   }: CreateStoreRequestDto): Promise<Store> {
     const store = new Store();
 
     store.name = name;
     store.url = url;
-    store.priceClassName = priceClassName ?? null;
-    store.priceId = priceId ?? null;
-    store.productNameClassName = productNameClassName ?? null;
-    store.productNameId = productNameId ?? null;
+    store.productNameSelector = productNameSelector;
+    store.productPriceSelector = productPriceSelector;
 
     return this.storesRepository.save(store);
   }
@@ -55,17 +61,11 @@ export class StoresService {
     if (storeDto.url !== undefined) {
       store.url = storeDto.url;
     }
-    if (storeDto.priceClassName !== undefined) {
-      store.priceClassName = storeDto.priceClassName;
+    if (storeDto.productPriceSelector !== undefined) {
+      store.productPriceSelector = storeDto.productPriceSelector;
     }
-    if (storeDto.priceId !== undefined) {
-      store.priceId = storeDto.priceId;
-    }
-    if (storeDto.productNameClassName !== undefined) {
-      store.productNameClassName = storeDto.productNameClassName;
-    }
-    if (storeDto.productNameId !== undefined) {
-      store.productNameId = storeDto.productNameId;
+    if (storeDto.productNameSelector !== undefined) {
+      store.productNameSelector = storeDto.productNameSelector;
     }
 
     return this.storesRepository.save(store);

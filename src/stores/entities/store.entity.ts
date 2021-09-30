@@ -11,15 +11,9 @@ export class Store {
   @Column({ unique: true })
   url!: string;
 
-  @Column({ name: 'price_id', nullable: true })
-  priceId?: string;
+  @Column({ name: 'product_price_selector', nullable: true })
+  productPriceSelector?: string;
 
-  @Column({ name: 'price_class_name', nullable: true })
-  priceClassName?: string;
-
-  @Column({ name: 'product_name_id', nullable: true })
-  productNameId?: string;
-
-  @Column({ name: 'product_name_class_name', nullable: true })
-  productNameClassName?: string;
+  @Column({ name: 'product_name_selector', nullable: true })
+  productNameSelector?: string;
 }

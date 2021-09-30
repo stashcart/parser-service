@@ -14,18 +14,10 @@ export class CreateStoreRequestDto {
   @ApiProperty({ example: 'price' })
   @IsString()
   @IsOptional()
-  priceId?: string;
-
-  @IsString()
-  @IsOptional()
-  priceClassName?: string;
+  productPriceSelector?: string;
 
   @ApiProperty({ example: 'name' })
   @IsString()
   @IsOptional()
-  productNameId?: string;
-
-  @IsString()
-  @IsOptional()
-  productNameClassName?: string;
+  productNameSelector?: string;
 }

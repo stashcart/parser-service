@@ -12,21 +12,13 @@ export class PatchStoreRequestDto {
   @IsOptional()
   url?: string;
 
-  @ApiProperty({ example: 'price' })
+  @ApiProperty({ example: '#price' })
   @IsString()
   @IsOptional()
-  priceId?: string;
+  productPriceSelector?: string;
 
+  @ApiProperty({ example: '#name' })
   @IsString()
   @IsOptional()
-  priceClassName?: string;
-
-  @ApiProperty({ example: 'name' })
-  @IsString()
-  @IsOptional()
-  productNameId?: string;
-
-  @IsString()
-  @IsOptional()
-  productNameClassName?: string;
+  productNameSelector?: string;
 }
