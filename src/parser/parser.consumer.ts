@@ -13,8 +13,7 @@ export class ParserConsumer {
 
   @RabbitSubscribe({
     exchange: 'product',
-    routingKey: 'parse',
-    queue: 'parser-service-queue',
+    routingKey: 'product.parse',
   })
   async parseProduct({ url, storeName }: ParseProductRequestDto) {
     const response = await this.parserService.parseProductByUrlAndStoreName(
