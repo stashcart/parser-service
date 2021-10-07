@@ -5,12 +5,25 @@ services:
     image: postgres
     container_name: parser-service-postgres
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
       - postgres:/var/lib/postgresql
     ports:
-      - 5436:5432
+      - ${DB_PORT}:5432
+
+  app:
+    build: .
+    container_name: parser-service-app
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+    ports:
+      - ${HTTP_PORT}:${HTTP_PORT}
+    depends_on:
+      - postgres
 
 volumes:
   postgres:
